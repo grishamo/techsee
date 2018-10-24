@@ -38,11 +38,9 @@ export default class UsersData {
         return new Promise((resolve, reject) => {
             axios.get(this.url + params.name)
             .then( res => {
-
                 if(!res.data || res.data.length === 0) {
                     throw new Error(this.errorMsg);
                 }
-
                 resolve( usersDataAdapter(res.data));
             })
             .catch( err => {
