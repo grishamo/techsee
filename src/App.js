@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Header from "./components/header/header";
 import SearchTesterForm from "./components/testerForm/searchTesterForm";
 import Sidebar from "./components/sidebar/sidebar";
-import UsersTable from "./components/mainContainer/mainContainer";
+import UsersTable from "./components/mainContainer/userTable";
 import UsersData from "./modules/fetchData";
 
 // App - Main entry point of the application
@@ -19,6 +19,7 @@ class App extends Component {
 
   state = {
     users : [],
+    dataLoading: false,
     error: null
   }
 
@@ -29,14 +30,16 @@ class App extends Component {
   }
 
   handleTesterFormSubmit(name) {
+    this.setState({dataLoading: true});
+
     this.usersData.get({name})
       .then( users => { 
-        this.setState({users});
+        this.setState({users, dataLoading: false});
       })
       .catch( err => {
         console.log(err)
         const error = err
-        this.setState({error});
+        this.setState({error, dataLoading: false});
       })
   }
 
@@ -47,7 +50,7 @@ class App extends Component {
         <Sidebar>
             <SearchTesterForm onSubmit={this.handleTesterFormSubmit}/>
         </Sidebar>
-        <UsersTable error={this.state.error} data={this.state.users}/>
+        <UsersTable error={this.state.error} data={this.state.users} loading={this.state.dataLoading}/>
       </div>
     );
   }

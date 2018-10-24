@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PreloaderIcon from "react-preloader-icon";
+import Oval from "react-preloader-icon/loaders/Oval";
 import "./userTable.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
@@ -54,6 +56,18 @@ class UsersTable extends Component {
           columns={this.state.columns}
           defaultSorted={this.defaultSorted}
         />
+
+        {this.props.loading && (
+          <PreloaderIcon
+            className="preloader"
+            loader={Oval}
+            size={50}
+            strokeWidth={8} // min: 1, max: 50
+            strokeColor="#bfbfbf"
+            duration={800}
+          />
+        )}
+
       </div>
     );
   }
