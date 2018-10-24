@@ -1,0 +1,37 @@
+.testerForm .inputContainer {
+    margin: 5px 0;
+    width: 100%;
+}
+.testerForm .inputContainer label {
+    display: block;
+    font-size: 13px;
+    color: #7c7c7c;
+}
+.testerForm .inputContainer input {
+    width: 100%;
+    margin: 4px 0;
+    padding: 10px;
+}
+.testerForm button.submitBtn { 
+    margin-top: 11px;
+    width: 100%;
+    padding: 8px 20px;
+    background: #5bbddc;
+    border: 1px solid #2694ab;
+    box-shadow: 0 1px 3px 0 #0000003d;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 700;
+
+    transition: background .5s; 
+}
+.testerForm button.submitBtn:hover {
+    background: #5ccff3;
+}
+.testerForm button.submitBtn:disabled {
+    opacity: .6;
+    background: #5bbedca8;
+    box-shadow: none;
+    color: inherit;
+    cursor: default;
+}
