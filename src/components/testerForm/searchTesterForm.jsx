@@ -19,19 +19,25 @@ class SearchTesterForm extends Component {
   handleTesterInputChange(event) {
     const value = event.target.value;
     const testerInput = this.state.testerInput;
-    const submitEnable = value.length >= testerInput.minlength;
+    const submitEnable = this.isInputValid(value);
     testerInput.value = value;
     this.setState({ testerInput, submitEnable });
   }
 
   handleTesterSubmit(event) {
     event.preventDefault();
-
-    if(typeof this.props.onSubmit === 'function') {
+    if (typeof this.props.onSubmit === "function" && this.isInputValid(this.state.testerInput.value)) {
       this.props.onSubmit(this.state.testerInput.value);
     }
   }
 
+  isInputValid(input) {
+    return (
+      input.length >= this.state.testerInput.minlength &&
+      input.length <= this.state.testerInput.maxlength
+    );
+  }
+  
   render() {
     return (
       <form className="testerForm" onSubmit={this.handleTesterSubmit}>

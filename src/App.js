@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   handleTesterFormSubmit(name) {
-    this.setState({dataLoading: true});
+    this.setState({dataLoading: true, error: null});
 
     this.usersData.get({name})
       .then( users => { 
