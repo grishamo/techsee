@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./searchTesterForm.css";
 
+// SearchTesterForm - search tester form
+// .....................................
+// <input name>
+// <submit> 
+//
 class SearchTesterForm extends Component {
   state = {
     testerInput: {
